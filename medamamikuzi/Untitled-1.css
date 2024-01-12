@@ -1,0 +1,29 @@
+/* styles.css */
+@charset "utf-8";
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 1000px;
+    font-family: Arial, sans-serif;
+    background-image: url('webback.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .center-content {
+    text-align: center;
+  }
+  
+  .fortune-image {
+    width: 70%; /* 70% の幅に調整 */
+    max-width: 900px; /* 最大幅を指定 */
+    height: auto;
+  }
+
+  body {
+    overflow-y: scroll;
+  }

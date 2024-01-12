@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>めだまみくじ</title>
+  <style>
+    /* ボディ全体のスタイル */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* 画面の高さいっぱいに表示 */
+      margin: 0; /* マージンをリセット */
+      font-family: Arial, sans-serif; /* デフォルトのフォントファミリー */
+      background-image: url('webback.jpg');
+      background-size: cover; /* 背景画像をブラウザウィンドウにフィットさせる */
+      background-repeat: no-repeat; /* 背景画像の繰り返しを無効にする */
+    }
+
+    /* 画面中央に配置する要素のスタイル */
+    .center-content {
+      text-align: center; /* テキストを中央揃え */
+    }
+
+    /* 画像のクラスを定義して共通のスタイルを適用 */
+    .fortune-image {
+      width: 700px; /* 幅を指定 */
+      height: auto; /* 高さは自動調整 */
+    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </style>
+</head>
+<body>
+    <header>
+        <img src="medamamikuzirogo.png" width="900" height="auto" alt="画像の説明">
+        <!-- 他のヘッダーコンテンツ -->
+      </header>
+
+  <div class="center-content">
+    <h1>めだまみくじ</h1>
+    <p id="fortuneText">今日の運勢は……</p>
+    <button id="drawButton" onclick="drawFortune()"><img src="your_button_image.png" width="200" height="200" alt="おみくじを引く"></button>
+    <div id="result"></div>
+    <button id="resetButton" style="display: none;" onclick="resetFortune()">もう一度ひく</button>
+  </div>
+
+  <script>
+    function drawFortune() {
+      var fortunes = [
+        { fortune: '大吉', image: 'omikuzi1.jpg' },
+        { fortune: '吉', image: 'omikuzi3.jpg' },
+        { fortune: '中吉', image: 'omikuzi5.jpg' },
+        { fortune: '小吉', image: 'omikuzi7.jpg' },
+        { fortune: '末吉', image: 'omikuzi9.jpg' },
+        { fortune: '凶', image: 'omikuzi11.jpg' },
+        { fortune: '大吉', image: 'omikuzi2.jpg' },
+        { fortune: '吉', image: 'omikuzi4.jpg' },
+        { fortune: '中吉', image: 'omikuzi6.jpg' },
+        { fortune: '小吉', image: 'omikuzi8.jpg' },
+        { fortune: '末吉', image: 'omikuzi10.jpg' },
+        { fortune: '凶', image: 'omikuzi12.jpg' }
+      ];
+
+      var randomIndex = Math.floor(Math.random() * fortunes.length);
+      var fortuneResult = fortunes[randomIndex].fortune;
+      var fortuneImage = fortunes[randomIndex].image;
+
+      var resultElement = document.getElementById('result');
+
+      var imgElement = document.createElement('img');
+      imgElement.src = fortuneImage;
+      imgElement.alt = fortuneResult;
+      imgElement.className = 'fortune-image';
+      resultElement.innerHTML = '';
+      resultElement.appendChild(imgElement);
+
+      document.getElementById('drawButton').style.display = 'none';
+      document.getElementById('resetButton').style.display = 'inline-block';
+      document.getElementById('fortuneText').innerHTML = '今日の運勢は……';
+    }
+
+    function resetFortune() {
+      document.getElementById('result').innerHTML = '';
+      document.getElementById('drawButton').style.display = 'inline-block';
+      document.getElementById('resetButton').style.display = 'none';
+      document.getElementById('fortuneText').innerHTML = '今日の運勢は……';
+    }
+  </script>
+</body>
+</html>
